@@ -11,14 +11,11 @@ import com.example.core.utilities.results.SuccessDataResult;
 import com.example.dataAccess.abstracts.EmployeeDao;
 import com.example.entities.concretes.Employee;
 
-
-
-
 @Service
-public class EmployeeManager implements EmployeeService{
+public class EmployeeManager implements EmployeeService {
 
 	private EmployeeDao employeeDao;
-	
+
 	@Autowired
 	public EmployeeManager(EmployeeDao employeeDao) {
 		super();
@@ -50,7 +47,7 @@ public class EmployeeManager implements EmployeeService{
 
 	@Override
 	public DataResult<List<Employee>> getAll() {
-		
+		// TODO Auto-generated method stub
 		return new SuccessDataResult<List<Employee>>(this.employeeDao.findAll());
 	}
 

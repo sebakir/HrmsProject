@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.business.abstracts.UserService;
 import com.example.core.utilities.results.DataResult;
+import com.example.core.utilities.results.Result;
 import com.example.core.utilities.results.SuccessDataResult;
+import com.example.core.utilities.results.SuccessResult;
 import com.example.dataAccess.abstracts.UserDao;
 import com.example.entities.concretes.User;
 
@@ -17,7 +19,7 @@ import com.example.entities.concretes.User;
 @Service
 public class UserManager implements UserService{
 
-	private UserDao userDao;
+private UserDao userDao;
 	
 	@Autowired
 	public UserManager(UserDao userDao) {
@@ -25,11 +27,11 @@ public class UserManager implements UserService{
 		this.userDao = userDao;
 	}
 
-//	@Override
-//	public Result add(User user) {
-//		this.userDao.save(user);
-//	    return new SuccessResult("User has been added.");
-//	}
+	@Override
+	public Result add(User user) {
+		this.userDao.save(user);
+	    return new SuccessResult("User has been added.");
+	}
 //
 //	@Override
 //	public Result update(User user) {
@@ -53,4 +55,9 @@ public class UserManager implements UserService{
 		return new SuccessDataResult<List<User>>(this.userDao.findAll());
 	}
 
+	@Override
+	public DataResult<User> getUserByEmail(String email) {
+
+		return new SuccessDataResult<User>(this.userDao.findUserByEmail(email));
+	}
 }

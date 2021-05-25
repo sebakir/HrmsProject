@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.business.abstracts.EmployerService;
 import com.example.core.utilities.results.DataResult;
+import com.example.core.utilities.results.Result;
 import com.example.core.utilities.results.SuccessDataResult;
+import com.example.core.utilities.results.SuccessResult;
 import com.example.dataAccess.abstracts.EmployerDao;
 import com.example.entities.concretes.Employer;
 
@@ -16,19 +18,18 @@ import com.example.entities.concretes.Employer;
 @Service
 public class EmployerManager implements EmployerService{
 
-	private EmployerDao employerDao;
+private EmployerDao employerDao;
 	
 	@Autowired
 	public EmployerManager(EmployerDao employerDao) {
-		super();
 		this.employerDao = employerDao;
 	}
 
-//	@Override
-//	public void add(Employer employer) {
-//		this.employerDao.save(employer);
-//      return new SuccessResult("Employer has been added.");
-//	} 
+	@Override
+	public Result add(Employer employer) {
+		this.employerDao.save(employer);
+        return new SuccessResult("Employer has been added.");
+	} 
 //
 //	@Override
 //	public void update(Employer employer) {
