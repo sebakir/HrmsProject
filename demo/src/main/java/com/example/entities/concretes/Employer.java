@@ -1,9 +1,14 @@
 package com.example.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +19,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name = "employers")
 @Entity
-
+@PrimaryKeyJoinColumn(name = "user_id")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdverts"})
 
 public class Employer extends User {
 //	@Id
@@ -22,15 +28,18 @@ public class Employer extends User {
 //	@Column(name= "user_id")
 //	private int userId;
 
-	@Column(name = "company_name")
+	@Column(name= "company_name")
 	private String companyName;
-
-	@Column(name = "website")
+	
+	@Column(name= "website")
 	private String website;
-
-	@Column(name = "phone_number")
+	
+	@Column(name= "phone_number")
 	private String phoneNumber;
-
-	@Column(name = "is_verified")
-	private boolean isVerified;
+	
+	@Column(name = "is_verified", columnDefinition = "boolean default false")
+	private boolean isVerified = false;
+	
+	@OneToMany(mappedBy = "employer")
+	private List<JobAdvert> jobAdverts;
 }

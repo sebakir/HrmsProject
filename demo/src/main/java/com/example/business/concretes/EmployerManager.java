@@ -30,27 +30,28 @@ private EmployerDao employerDao;
 		this.employerDao.save(employer);
         return new SuccessResult("Employer has been added.");
 	} 
-//
-//	@Override
-//	public void update(Employer employer) {
-//		this.employerDao.save(employer);
-//      return new SuccessResult("Employer has been updated.");
-//	}
-//
-//	@Override
-//	public Result delete(int id) {
-//		this.employerDao.deleteById(id);
-//	    return new SuccessResult("Employer has been deleted.");
-//	}
-//
-//	@Override
-//	public DataResult<Employer> getById(int id) {
-//		return new SuccessDataResult<Employer>(this.employerDao.getOne(id));
-//	}
+
+	@Override
+	public Result update(Employer employer) {
+		this.employerDao.save(employer);
+      return new SuccessResult("Employer has been updated.");
+	}
+
+	@Override
+	public Result delete(int id) {
+		this.employerDao.deleteById(id);
+	    return new SuccessResult("Employer has been deleted.");
+	}
+
+	@Override
+	public DataResult<Employer> getById(int id) {
+		return new SuccessDataResult<Employer>(this.employerDao.getOne(id));
+	}
 
 	@Override
 	public DataResult<List<Employer>> getAll() {
 		return new SuccessDataResult<List<Employer>>(this.employerDao.findAll());
+
 	}
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,21 +31,21 @@ public class JobseekersController {
 	public Result add(@RequestBody Jobseeker jobseeker){
 		return this.jobseekerService.add(jobseeker);
 	}
-//	
-//	@PostMapping("/update")
-//	public Result update(@RequestBody Jobseeker jobseeker){
-//		return this.jobseekerService.update(jobseeker);
-//	}
-//	
-//	@PostMapping("/delete")
-//	public Result delete(@PathVariable("id") int id){
-//		return this.jobseekerService.delete(id);
-//	}
-//	
-//	@GetMapping("/getbyid")
-//	public DataResult<Jobseeker> getById(@PathVariable("id") int id){
-//		return this.jobseekerService.getById(id);
-//	}
+	
+	@PostMapping("/update")
+	public Result update(@RequestBody Jobseeker jobseeker){
+		return this.jobseekerService.update(jobseeker);
+	}
+	
+	@PostMapping("/delete")
+	public Result delete(@PathVariable("id") int id){
+		return this.jobseekerService.delete(id);
+	}
+	
+	@GetMapping("/getbyid")
+	public DataResult<Jobseeker> getById(@PathVariable("id") int id){
+		return this.jobseekerService.getById(id);
+	}
 
 	@GetMapping("/getall")
 	public DataResult<List<Jobseeker>> getAll() {

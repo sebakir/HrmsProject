@@ -10,11 +10,11 @@ public interface EmployerService {
 
 	Result add(Employer employer);
 
-	//Result update(Employer employer);
+	Result update(Employer employer);
 
-	//Result delete(int id);
+	Result delete(int id);
 
-	//DataResult<Employer> getById(int id);
+	DataResult<Employer> getById(int id);
 
 	DataResult<List<Employer>> getAll();
 }
