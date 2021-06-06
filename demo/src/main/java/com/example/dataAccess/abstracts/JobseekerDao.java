@@ -6,4 +6,5 @@ import com.example.entities.concretes.Jobseeker;
 
 public interface JobseekerDao extends JpaRepository<Jobseeker, Integer> {
 	Jobseeker findJobseekerByNationalId(String nationalId);
+	Jobseeker getById(int id);
 }

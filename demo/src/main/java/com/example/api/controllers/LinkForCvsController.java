@@ -11,46 +11,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.business.abstracts.CityService;
+import com.example.business.abstracts.LinkForCvService;
 import com.example.core.utilities.results.DataResult;
 import com.example.core.utilities.results.Result;
-import com.example.entities.concretes.City;
+import com.example.entities.concretes.LinkForCv;
 
 @RestController
-@RequestMapping("/api/city")
+@RequestMapping("/api/linkforcv")
 @CrossOrigin
-public class CityController {
+public class LinkForCvsController {
 
-	private CityService cityService;
+	private LinkForCvService linkForCvService;
 
 	@Autowired
-	public CityController(CityService cityService) {
+	public LinkForCvsController(LinkForCvService linkForCvService) {
 		super();
-		this.cityService = cityService;
+		this.linkForCvService = linkForCvService;
 	}
 
 	@PostMapping("/add")
-	public Result add(@RequestBody City city) {
-		return this.cityService.add(city);
+	public Result add(@RequestBody LinkForCv linkForCv) {
+		return this.linkForCvService.add(linkForCv);
 	}
 
 	@PostMapping("/update")
-	public Result update(@RequestBody City city) {
-		return this.cityService.update(city);
+	public Result update(@RequestBody LinkForCv linkForCv) {
+		return this.linkForCvService.update(linkForCv);
 	}
 
 	@PostMapping("/delete")
 	public Result delete(@PathVariable("id") int id) {
-		return this.cityService.delete(id);
+		return this.linkForCvService.delete(id);
 	}
 
 	@GetMapping("/getbyid")
-	public DataResult<City> getById(@PathVariable("id") int id) {
-		return this.cityService.getById(id);
+	public DataResult<LinkForCv> getById(@PathVariable("id") int id) {
+		return this.linkForCvService.getById(id);
 	}
 
 	@GetMapping("/getall")
-	public DataResult<List<City>> getAll() {
-		return this.cityService.getAll();
+	public DataResult<List<LinkForCv>> getAll() {
+		return this.linkForCvService.getAll();
+	}
+
+	@GetMapping("/getallbyjobseekerid")
+	public DataResult<List<LinkForCv>> getAllByJobseekerId(int id) {
+		return this.getAllByJobseekerId(id);
 	}
 }

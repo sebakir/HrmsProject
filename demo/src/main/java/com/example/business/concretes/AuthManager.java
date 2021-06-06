@@ -185,7 +185,7 @@ public class AuthManager implements AuthService {
 
 	private void verificationCodeRecord(String code, int id, String email) {
 
-		VerificationCode verificationCode = new VerificationCode(id, code, false, LocalDate.now());
+		VerificationCode verificationCode = new VerificationCode(id, code, false);
 		this.verificationCodeService.add(verificationCode);
 		System.out.println("Verification code has been sent to " + email);
 

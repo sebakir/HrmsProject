@@ -20,25 +20,25 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
-public class User {
+public class User  extends Base{
 
-	@Id
-	@GeneratedValue
-	@Column(name = "id")
-	private int id;
+//	@Id
+//	@GeneratedValue
+//	@Column(name = "id")
+//	private int id;
 
 	@Column(name = "email")
 	private String email;
 
 	@Column(name = "password")
 	private String password;
-
-	@Column(name = "created_at", columnDefinition = "Date defult CURRENT_DATE")
-	private LocalDate createdAt = LocalDate.now();
-
-	@Column(name = "is_active", columnDefinition = "boolean default true")
-	private boolean isActive = true;
-
-	@Column(name = "is_deleted", columnDefinition = "boolean default false")
-	private boolean isDeleted = false;
+//
+//	@Column(name = "created_at", columnDefinition = "Date defult CURRENT_DATE")
+//	private LocalDate createdAt = LocalDate.now();
+//
+//	@Column(name = "is_active", columnDefinition = "boolean default true")
+//	private boolean isActive = true;
+//
+//	@Column(name = "is_deleted", columnDefinition = "boolean default false")
+//	private boolean isDeleted = false;
 }

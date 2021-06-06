@@ -21,26 +21,26 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdverts"})
-public class JobPosition {
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "jobAdverts" })
+public class JobPosition extends Base {
 
-	@Id
-	@GeneratedValue
-	@Column(name = "id")
-	private int id;
+//	@Id
+//	@GeneratedValue
+//	@Column(name = "id")
+//	private int id;
+
+//	@Column(name= "created_at", columnDefinition = "Date default CURRENT_DATE")
+//	private LocalDate createdDate = LocalDate.now();
+//	
+//	@Column(name= "is_active", columnDefinition = "boolean default true")
+//	private boolean isActive = true;
+//	
+//	@Column(name= "is_deleted", columnDefinition = "boolean default false")
+//	private boolean isDeleted = false;
 
 	@Column(name = "job_title")
 	private String jobTitle;
 
-	@Column(name= "created_at", columnDefinition = "Date default CURRENT_DATE")
-	private LocalDate createdDate = LocalDate.now();
-	
-	@Column(name= "is_active", columnDefinition = "boolean default true")
-	private boolean isActive = true;
-	
-	@Column(name= "is_deleted", columnDefinition = "boolean default false")
-	private boolean isDeleted = false;
-	
 	@OneToMany(mappedBy = "jobPosition")
-	private List<JobAdvert> jobAdverts; 
+	private List<JobAdvert> jobAdverts;
 }
